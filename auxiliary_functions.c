@@ -77,3 +77,37 @@ char *_strcpy(char *dest, char *src)
 
 	return (dest);
 }
+
+/**
+* *_strcat - concatenates two strings
+*
+* @dest: pointer
+*
+* @src: pointer
+*
+* Return: string
+*/
+char *_strcat(char *dest, char *src)
+{
+	int i, len;
+
+	if (dest == NULL)
+	{
+		return (NULL);
+	}
+	if (src == NULL)
+	{
+		return (dest);
+	}
+	for (len = 0; dest[len] != '\0'; )
+	{
+		len++;
+	}
+	for (i = 0; src[i] != '\0'; i++)
+	{
+		dest[len + i] = src[i];
+	}
+	dest[len + i] = '\0';
+
+	return (dest);
+}
