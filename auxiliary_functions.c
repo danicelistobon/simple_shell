@@ -47,3 +47,33 @@ int _strfind(char c, char *s)
 	}
 	return (0);
 }
+
+/**
+* *_strcpy - copies the str pointed to by src to the buffer pointed to by dest
+*
+* @dest: destination string
+*
+* @src: source string
+*
+* Return: pointer to destination string
+*/
+char *_strcpy(char *dest, char *src)
+{
+	int i;
+
+	if (dest == NULL)
+	{
+		return (NULL);
+	}
+	if (src == NULL)
+	{
+		return (dest);
+	}
+	for (i = 0; src[i] != '\0'; i++)
+	{
+		dest[i] = src[i];
+	}
+	dest[i] = '\0';
+
+	return (dest);
+}
