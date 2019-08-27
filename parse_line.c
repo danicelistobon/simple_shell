@@ -13,10 +13,9 @@ char **parse_line(char *line)
 	char *token;
 	char **tokens = malloc(sizeof(char *) * buffer);
 
-	if (!tokens)
+	if (tokens == NULL)
 	{
-		perror("lsh: allocation error\n");
-		exit(EXIT_FAILURE);
+		return (NULL);
 	}
 	token = strtok(line, " \r\n\t");
 
@@ -24,19 +23,6 @@ char **parse_line(char *line)
 	{
 		tokens[i] = token;
 		i++;
-
-		if (i >= buffer)
-		{
-			buffer += 64;
-
-			tokens = realloc(tokens, sizeof(char *) * buffer);
-
-			if (!tokens)
-			{
-				perror("lsh: allocation error\n");
-				exit(EXIT_FAILURE);
-			}
-		}
 		token = strtok(NULL, " \r\n\t");
 	}
 	tokens[i] = NULL;
