@@ -4,30 +4,21 @@
 *
 * @args: arguments given by parse function
 *
-* Return: status(1)
+* @st: pointer to status
+*
+* Return: 0 on success or 1 on otherwise
 */
-int execute(char **args)
+int execute(char **args, struct stat *st)
 {
-	pid_t pid;
-	int status;
+	char *path;
 
-	pid = fork();
-	if (pid == 0)
-	{
-		if (execvp(args[0], args) == -1)
-		{
-			perror("lsh");
-		}
-		exit(EXIT_FAILURE);
-	}
-	else if (pid < 0)
-	{
-		perror("lsh");
-	}
-	else
-	{
-			wait(&status);
-	}
+	path = getpath(args[0]);
 
+	if (path != NULL && stat(path, st) == 0 && access(path, X_OK) == 0)
+	{
+		execve(path, args, NULL);
+
+		return (0);
+	}
 	return (1);
 }
