@@ -111,3 +111,38 @@ char *_strcat(char *dest, char *src)
 
 	return (dest);
 }
+
+/**
+* _strcmp - compares two strings
+*
+* @s1: pointer to string 1
+*
+* @s2: pointer to string 2
+*
+* Return: result
+*/
+int _strcmp(char *s1, char *s2)
+{
+	int i = 0;
+	int len_dif;
+
+	len_dif = _strlen(s1) - _strlen(s2);
+
+	if (len_dif != 0)
+	{
+		return (len_dif);
+	}
+	while (s1[i])
+	{
+		if (s1[i] > s2[i])
+		{
+			return (s1[i] - s2[i]);
+		}
+		else if (s1[i] < s2[i])
+		{
+			return (s1[i] - s2[i]);
+		}
+		i++;
+	}
+	return (0);
+}
