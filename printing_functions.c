@@ -52,6 +52,8 @@ void print_error(char *prog, int loop_count, char *line)
 	write(STDERR_FILENO, line, _strlen(line));
 	write(STDERR_FILENO, ": ", 2);
 
+	free(buffer);
+
 	if (errno == EACCES)
 	{
 		write(STDERR_FILENO, "Permission denied\n", 18);
