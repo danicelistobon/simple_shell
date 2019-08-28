@@ -14,7 +14,7 @@ int main(int argc __attribute__((unused)), char *argv[])
 	char **args = NULL;
 	char *str = "#cisfun$ ";
 	int status;
-	int loop_count = 0;
+	int loop_count = 1;
 	pid_t _loop;
 
 	signal(SIGINT, SIG_IGN);

@@ -41,23 +41,15 @@ int _putchar(char c)
 */
 void print_error(char *prog, int loop_count, char *line)
 {
-	int value;
-	char buffer[20];
+	char *buffer;
 
-	value = loop_count + 1;
-
-	snprintf(buffer, 10, "%d", value);
+	buffer = _itoa(loop_count);
 
 	write(STDERR_FILENO, prog, _strlen(prog));
-
 	write(STDERR_FILENO, ": ", 2);
-
 	write(STDERR_FILENO, buffer, _strlen(buffer));
-
 	write(STDERR_FILENO, ": ", 2);
-
 	write(STDERR_FILENO, line, _strlen(line));
-
 	write(STDERR_FILENO, ": ", 2);
 
 	if (errno == EACCES)
@@ -104,4 +96,32 @@ int _atoi(char *s)
 		s++;
 	}
 	return (num * n);
+}
+
+char *_itoa(int count)
+{
+	char *numstr;
+	int tmp, digits;
+
+	tmp = count;
+
+	for (digits = 0; tmp != 0; digits++)
+	{
+		tmp /= 10;
+	}
+	numstr = malloc(sizeof(char) * (digits + 1));
+
+	if (numstr == NULL)
+	{
+		perror("Fatal Error1");
+		exit(127);
+	}
+	numstr[digits] = '\0';
+
+	for (--digits; count; --digits)
+	{
+		numstr[digits] = (count % 10) + '0';
+		count /= 10;
+	}
+	return (numstr);
 }

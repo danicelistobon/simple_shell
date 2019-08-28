@@ -25,6 +25,7 @@ void _puts(char *str);
 int _putchar(char c);
 void print_error(char *prog, int loop_count, char *line);
 int _atoi(char *s);
+char *_itoa(int count);
 int _strlen(char *s);
 int _strfind(char c, char *s);
 char *_strcpy(char *dest, char *src);
