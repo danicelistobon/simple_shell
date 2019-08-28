@@ -15,7 +15,7 @@ char *read_line(void)
 	if (function_return == -1 || function_return == EOF)
 	{
 		free(line);
-		exit(EXIT_FAILURE);
+		exit(0);
 	}
 	return (line);
 }
