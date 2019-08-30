@@ -100,6 +100,13 @@ int _atoi(char *s)
 	return (num * n);
 }
 
+/**
+* *_itoa - convert a number to a string
+*
+* @count: number to convert
+*
+* Return: string
+*/
 char *_itoa(int count)
 {
 	char *numstr;
